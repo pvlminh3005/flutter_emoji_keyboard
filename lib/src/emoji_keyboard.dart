@@ -396,62 +396,6 @@ class EmojiBoard extends State<EmojiKeyboard> {
             ])
           ]),
         ),
-        widget.showEmojiKeyboard && searchMode
-            ? Container(
-                color: this.darkMode ? Color(0xff373737) : Color(0xffc5c5c5),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      height: isPortrait()
-                          ? MediaQuery.of(context).size.width / 8
-                          : 50,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: searchedEmojis.length,
-                        itemBuilder: (context, index) {
-                          return TextButton(
-                              onPressed: () {
-                                insertTextSearch(searchedEmojis[index]);
-                              },
-                              child: FittedBox(
-                                fit: BoxFit.fitWidth,
-                                child: Text(searchedEmojis[index],
-                                    style: TextStyle(fontSize: 50)),
-                              ));
-                        },
-                      ),
-                    ),
-                    Row(children: [
-                      Container(
-                          child: IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        color: Colors.grey.shade600,
-                        onPressed: () {
-                          pressedBackSearch();
-                        },
-                      )),
-                      Expanded(
-                        child: TextFormField(
-                            focusNode: focusSearchEmoji,
-                            onChanged: (text) {
-                              updateEmojiSearch(text);
-                            },
-                            style: TextStyle(
-                              color: darkMode ? Colors.white : Colors.black,
-                            ),
-                            decoration: new InputDecoration(
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none)),
-                      ),
-                    ]),
-                  ],
-                ),
-              )
-            : Container(),
       ])),
     );
   }
