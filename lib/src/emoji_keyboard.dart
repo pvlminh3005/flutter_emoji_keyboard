@@ -379,7 +379,9 @@ class EmojiBoard extends State<EmojiKeyboard> {
                 key: categoryBarStateKey,
                 categoryHandler: categoryHandler,
                 darkMode: darkMode),
-              EmojiPage(
+            Stack(
+              children: [
+                EmojiPage(
                   key: emojiPageStateKey,
                   emojiKeyboardHeight: isPortrait() ? emojiKeyboardHeight : 150,
                   bromotionController: bromotionController!,
@@ -388,6 +390,9 @@ class EmojiBoard extends State<EmojiKeyboard> {
                   recent: recentEmojis,
                   switchedPage: switchedPage,
               ),
+             ],
+            ),
+              
           ]),
         ),
       ])),
